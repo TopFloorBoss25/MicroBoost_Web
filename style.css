@@ -397,3 +397,76 @@ header .stats-display span {
 
 
 /* ... (Rest van je CSS) ... */
+
+/* ... (Behoud alle vorige relevante CSS) ... */
+
+.filter-controls {
+    /* ... (bestaande stijlen) ... */
+    margin-bottom: 15px; /* Iets minder marge als surprise knop eronder komt */
+}
+
+.surprise-me-container {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.button-special { /* Stijl voor de "Surprise Me!" knop */
+    background-color: #9b59b6; /* Paars accent */
+    color: white;
+    padding: 10px 20px;
+    font-size: 1.05em;
+    box-shadow: 0 4px 10px rgba(155, 89, 182, 0.3);
+}
+.button-special:hover {
+    background-color: #8e44ad;
+}
+.button-special i {
+    margin-right: 8px;
+}
+
+
+.challenge-card {
+    position: relative;
+    background-color: #e9f5f9;
+    padding: 20px 25px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px dashed #a0d2eb;
+    /* transition al in vorige code voor opacity/transform */
+}
+
+/* ... (bestaande .challenge-card #challengeText stijlen en .favorite-button stijlen) ... */
+
+.quote-container {
+    margin-top: 25px;
+    padding: 15px;
+    background-color: #fff9e6; /* Lichte gele/crème achtergrond voor quote */
+    border-radius: 8px;
+    min-height: 40px; /* Zodat het niet springt als er geen quote is */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-left: 5px solid #f4a261; /* Oranje accent links */
+}
+
+#motivationalQuote {
+    font-size: 0.95em;
+    color: #574c39; /* Donkerbruin/grijs voor tekst */
+    font-style: italic;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+#motivationalQuote.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* ... (Rest van je CSS) ... */
