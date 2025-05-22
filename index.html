@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MicroBoost - Jouw Dagelijkse Acties</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+    <!-- Font Awesome voor iconen (optioneel, maar handig voor favorieten) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>MicroBoost</h1>
+            <p>Kies de duur van jouw volgende positieve actie!</p>
+            <div class="stats-display">
+                <span id="streakDisplay">🔥 Streak: 0 Dagen</span>
+                <span id="totalBoostsDisplay">🚀 Totaal Boosts: 0</span>
+            </div>
+        </header>
+
+        <main>
+            <div class="filter-controls" id="filterButtons">
+                <button class="button filter-button" data-filter="all">Alles</button>
+                <button class="button filter-button" data-filter="short">Snel (1-2 min)</button>
+                <button class="button filter-button" data-filter="medium">Medium (5-10 min)</button>
+                <button class="button filter-button" data-filter="long">Uitgebreid (15+ min)</button>
+                <button id="showFavoritesButton" class="button filter-button favorite-toggle-button"><i class="fas fa-heart"></i> Favorieten</button>
+            </div>
+
+            <div class="challenge-card">
+                <p id="challengeText">Je uitdaging wordt geladen...</p>
+                <button id="favoriteButton" class="favorite-button"><i class="far fa-heart"></i></button>
+            </div>
+
+            <div class="actions">
+                <button id="doneButton" class="button">Gedaan!</button>
+                <button id="nextOrNewButton" class="button button-secondary">Nieuwe Uitdaging</button>
+            </div>
+
+            <div class="feedback-container">
+                <p id="feedbackText"></p>
+            </div>
+
+            <div id="favoritesPanel" class="favorites-panel hidden">
+                <h2>Mijn Favoriete Uitdagingen</h2>
+                <ul id="favoritesList">
+                    <!-- Favorieten worden hier ingeladen -->
+                </ul>
+                <button id="closeFavoritesButton" class="button button-secondary">Sluiten</button>
+            </div>
+        </main>
+
+        <footer>
+            <p>© <span id="currentYear"></span> MicroBoost - Kleine stapjes, heel groot verschil.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

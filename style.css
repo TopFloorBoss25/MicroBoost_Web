@@ -1,0 +1,399 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f9ff; /* Lichte, luchtige blauwtint */
+    color: #333;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+    line-height: 1.6;
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+}
+
+header h1 {
+    color: #2a9d8f; /* Groenblauw accent */
+    font-size: 2.5em;
+    margin-bottom: 5px;
+}
+
+header p {
+    color: #555;
+    font-size: 1.1em;
+    margin-bottom: 30px;
+}
+
+.challenge-card {
+    background-color: #e9f5f9; /* Nog lichtere blauwtint voor de kaart */
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 25px;
+    min-height: 100px; /* Zodat het niet te veel springt */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px dashed #a0d2eb; /* Gestippelde rand */
+}
+
+#challengeText {
+    font-size: 1.4em;
+    color: #2c7a7b; /* Donkerder groenblauw voor tekst */
+    font-weight: 600;
+}
+
+.actions {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column; /* Knoppen onder elkaar op mobiel */
+    gap: 10px;
+}
+
+@media (min-width: 480px) { /* Knoppen naast elkaar op grotere schermen */
+    .actions {
+        flex-direction: row;
+        justify-content: center;
+    }
+}
+
+/* ... (Behoud alle vorige relevante CSS) ... */
+
+.filter-controls {
+    display: flex;
+    flex-wrap: wrap; /* Zorgt dat knoppen naar volgende regel gaan als ze niet passen */
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.filter-button {
+    background-color: #e0e0e0; /* Neutrale kleur voor niet-actieve filters */
+    color: #555;
+    padding: 8px 15px;
+    font-size: 0.95em;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.filter-button:hover {
+    background-color: #d0d0d0;
+}
+
+.filter-button.active {
+    background-color: #2a9d8f; /* Hoofdkleur voor actieve filter */
+    color: white;
+    box-shadow: 0 4px 10px rgba(42, 157, 143, 0.3);
+}
+
+/* Stijl voor de geschatte tijd in de challenge tekst */
+.challenge-card #challengeText .estimated-time {
+    display: block; /* Op een nieuwe regel voor duidelijkheid */
+    font-size: 0.8em;
+    color: #777;
+    margin-top: 5px;
+    font-style: italic;
+}
+
+/* Aanpassing aan challenge card om ruimte te maken voor estimated time */
+.challenge-card { 
+    background-color: #e9f5f9;
+    padding: 20px 25px; /* Iets aangepaste padding */
+    border-radius: 10px;
+    margin-bottom: 25px;
+    min-height: 120px; /* Iets hoger voor de extra tekstregel */
+    display: flex;
+    flex-direction: column; /* Zodat estimated time onder de challenge komt */
+    justify-content: center;
+    align-items: center;
+    border: 2px dashed #a0d2eb;
+}
+
+#challengeText { /* Reset text-align voor het geval het van body erft */
+    text-align: center;
+}
+
+/* ... (Rest van je CSS, inclusief .button, .feedback-container etc.) ... */
+.button {
+    background-color: #2a9d8f; /* Groenblauw */
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1.1em;
+    font-weight: 600;
+    border-radius: 25px; /* Rondere knoppen */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(42, 157, 143, 0.3);
+}
+
+.button:hover {
+    background-color: #268a7e; /* Iets donkerder bij hover */
+    transform: translateY(-2px); /* Kleine lift bij hover */
+}
+
+.button:active {
+    transform: translateY(0px); /* Terug naar normaal bij klik */
+    box-shadow: 0 2px 5px rgba(42, 157, 143, 0.3);
+}
+
+
+.button-secondary {
+    background-color: #f4a261; /* Oranje accentkleur */
+    box-shadow: 0 4px 10px rgba(244, 162, 97, 0.3);
+}
+
+.button-secondary:hover {
+    background-color: #e7904e;
+}
+
+
+.feedback-container {
+    min-height: 30px; /* Ruimte voor feedback */
+    margin-top: 15px;
+}
+
+#feedbackText {
+    font-size: 1.2em;
+    color: #e76f51; /* Rood-oranje voor feedback */
+    font-weight: 600;
+    opacity: 0; /* Initieel onzichtbaar */
+    transform: translateY(10px); /* Initieel iets naar beneden */
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+#feedbackText.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+footer {
+    margin-top: 30px;
+    font-size: 0.9em;
+    color: #777;
+}
+
+/* ... (Behoud alle vorige CSS) ... */
+
+/* Nieuwe CSS voor challenge text animatie */
+.challenge-card #challengeText {
+    font-size: 1.4em;
+    color: #2c7a7b;
+    font-weight: 600;
+    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.challenge-card #challengeText.fade-out {
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+.challenge-card #challengeText.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* Feedback animatie verbetering */
+#feedbackText {
+    font-size: 1.2em;
+    color: #e76f51;
+    font-weight: 600;
+    opacity: 0;
+    transform: scale(0.8) translateY(20px); /* Begin kleiner en lager */
+    transition: opacity 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55), transform 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Bounce effect */
+}
+
+#feedbackText.show {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+}
+
+/* Stijl voor de knoppen wanneer disabled (duidelijker) */
+.button:disabled {
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+/* ... (Behoud alle vorige relevante CSS) ... */
+
+header .stats-display {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 0.95em;
+    color: #555;
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Ruimte tussen streak en totaal */
+}
+
+header .stats-display span {
+    background-color: #e9f5f9;
+    padding: 5px 10px;
+    border-radius: 15px;
+}
+
+.challenge-card {
+    position: relative; /* Nodig voor absolute positionering van favoriet knop */
+    /* ... (andere .challenge-card stijlen blijven) ... */
+}
+
+.favorite-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 1.5em; /* Groter icoon */
+    color: #e76f51; /* Oranje-rood voor hartje */
+    cursor: pointer;
+    padding: 5px;
+    transition: transform 0.2s ease;
+}
+
+.favorite-button:hover {
+    transform: scale(1.2);
+}
+
+.favorite-button i.fas { /* Stijl voor gevuld hart */
+    color: #e76f51; /* Behoud kleur */
+}
+.favorite-button i.far { /* Stijl voor leeg hart */
+    color: #cccccc; /* Grijs als niet favoriet */
+}
+.favorite-button.is-favorite i.far { /* Verberg leeg hart als favoriet */
+    display: none;
+}
+.favorite-button.is-favorite i.fas { /* Toon gevuld hart als favoriet */
+    display: inline-block; /* Of wat nodig is voor Font Awesome */
+}
+/* Als je geen Font Awesome gebruikt en tekst "Favoriet" hebt, pas dit dan aan */
+
+
+.favorites-panel {
+    position: fixed; /* Of absolute, afhankelijk van gewenst effect */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    z-index: 1000; /* Boven andere content */
+    width: 90%;
+    max-width: 450px;
+    max-height: 80vh; /* Maximale hoogte */
+    overflow-y: auto; /* Scrollen als lijst lang is */
+    text-align: left;
+}
+
+.favorites-panel.hidden {
+    display: none;
+}
+
+.favorites-panel h2 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #2a9d8f;
+}
+
+.favorites-panel ul {
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.favorites-panel li {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 0.95em;
+    display: flex; /* Voor verwijder knop */
+    justify-content: space-between;
+    align-items: center;
+}
+.favorites-panel li:last-child {
+    border-bottom: none;
+}
+.favorites-panel .remove-favorite-btn {
+    background: none;
+    border: none;
+    color: #e76f51;
+    font-size: 0.9em;
+    cursor: pointer;
+    padding: 5px;
+}
+.favorites-panel .remove-favorite-btn:hover {
+    color: #c0392b;
+}
+
+
+/* Stijl voor de favorieten toggle knop in de filters */
+.favorite-toggle-button i {
+    margin-right: 5px;
+}
+
+/* ... (Behoud alle vorige relevante CSS) ... */
+
+/* Stijl voor de daadwerkelijke filterknoppen (Alles, Snel, Medium, Lang) */
+.filter-button[data-filter] { /* Selecteert alleen knoppen met data-filter attribuut */
+    background-color: #f0f0f0;
+    color: #555;
+    border: 2px solid transparent;
+    padding: 8px 15px;
+    font-size: 0.95em;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+    font-weight: 500;
+}
+
+.filter-button[data-filter]:hover {
+    background-color: #e0e0e0;
+    color: #333;
+    transform: translateY(-1px);
+}
+
+.filter-button[data-filter].active { /* Deze .active class is voor de geselecteerde DUUR-filter */
+    background-color: #2a9d8f;
+    color: white;
+    border-color: #227c70;
+    font-weight: 600;
+    transform: translateY(0);
+    box-shadow: 0 3px 8px rgba(42, 157, 143, 0.25);
+}
+
+/* Aparte styling voor de "Favorieten" knop, die nu meer als een toggle fungeert */
+#showFavoritesButton {
+    background-color: #f4a261; /* Oranje basiskleur, bijvoorbeeld */
+    color: white;
+    border: 2px solid transparent; /* Voor consistentie */
+    /* Behoud padding, font-size, border-radius, cursor, transition van .filter-button als je wilt */
+}
+
+#showFavoritesButton:hover {
+    background-color: #e7904e; /* Donkerder oranje bij hover */
+}
+
+/* Optionele stijl als het favorietenpaneel open is (via JS class 'active-panel-open') */
+#showFavoritesButton.active-panel-open {
+    background-color: #d98240; /* Nog donkerder oranje als paneel open is */
+    border-color: #c06c30;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.15); /* Ingedrukt effect */
+}
+
+
+/* ... (Rest van je CSS) ... */
