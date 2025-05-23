@@ -470,3 +470,212 @@ header .stats-display span {
 
 
 /* ... (Rest van je CSS) ... */
+
+/* ... (Al je bestaande CSS code blijft hierboven) ... */
+
+/* Homepage Specifieke Stijlen */
+.homepage-container {
+    max-width: 800px; /* Iets breder voor een homepage wellicht */
+    text-align: center; /* Centreer de meeste content */
+}
+
+.homepage-header {
+    margin-bottom: 40px;
+}
+
+.logo {
+    max-width: 150px; /* Pas aan naar de grootte van je logo */
+    margin-bottom: 20px;
+}
+
+.homepage-header h1 {
+    font-size: 3em; /* Grotere titel voor homepage */
+    color: #2a9d8f;
+    margin-bottom: 10px;
+    font-weight: 700; /* Extra bold */
+}
+
+.tagline {
+    font-size: 1.3em;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.homepage-main section {
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: #f9f9f9; /* Lichte achtergrond voor secties */
+    border-radius: 10px;
+}
+
+.homepage-main h2 {
+    font-size: 1.8em;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.homepage-main p {
+    font-size: 1.1em;
+    color: #444;
+    line-height: 1.7;
+    max-width: 600px; /* Voorkom te brede tekstregels */
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+}
+
+.cta-section {
+    background-color: #e9f5f9; /* Lichte blauwe achtergrond voor CTA */
+    padding: 30px 20px;
+}
+
+.cta-button {
+    font-size: 1.3em !important; /* Zorg dat hij opvalt */
+    padding: 15px 35px !important;
+    background-color: #e76f51 !important; /* Onderscheidende CTA kleur */
+    box-shadow: 0 5px 15px rgba(231, 111, 81, 0.4) !important;
+    text-decoration: none;
+}
+
+.cta-button:hover {
+    background-color: #d15b3a !important;
+}
+
+.homepage-footer {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+    font-size: 0.9em;
+    color: #777;
+}
+
+/* In style.css */
+.header-top-row {
+    display: flex;
+    justify-content: space-between; /* Verdeelt h1 en home-link */
+    align-items: center;
+    margin-bottom: 5px; /* Of pas aan naar wens */
+}
+
+.home-link {
+    font-size: 1em;
+    color: #2a9d8f;
+    text-decoration: none;
+    padding: 5px 10px;
+    border: 1px solid #2a9d8f;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.home-link:hover {
+    background-color: #2a9d8f;
+    color: white;
+}
+
+/* ... (Al je bestaande CSS code blijft hierboven) ... */
+
+/* Homepage - Dopamine Editie Stijlen */
+.homepage-container {
+    max-width: 600px; /* Iets smaller voor een meer gefocuste look */
+    padding: 20px; /* Iets minder padding voor een compactere feel */
+}
+
+.logo {
+    max-width: 120px; /* Kan iets kleiner als de pagina compacter is */
+    margin-bottom: 15px;
+    /* Als je geen Animate.css gebruikt, kun je hier een simpele CSS animatie toevoegen: */
+    /* animation: pulseLogo 2s infinite ease-in-out; */
+}
+/* @keyframes pulseLogo { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } } */
+
+
+.homepage-header h1 {
+    font-size: 2.8em; /* Iets aangepast */
+    margin-bottom: 5px;
+}
+
+.tagline {
+    font-size: 1.4em; /* Groter en pakkender */
+    color: #e76f51; /* Opvallende kleur */
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+.hero-section {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.visual-placeholder {
+    margin-bottom: 15px;
+    /* Hier zou je styling voor je GIF/video/afbeelding komen */
+    /* Voorbeeld styling voor de Font Awesome iconen: */
+    font-size: 3em; /* Grote iconen */
+    color: #2a9d8f; /* Hoofdkleur */
+}
+.visual-placeholder .hero-icon {
+    margin: 0 10px;
+    animation: bounceIcon 2s infinite ease-in-out;
+}
+.visual-placeholder .hero-icon:nth-child(2) { animation-delay: 0.2s; }
+.visual-placeholder .hero-icon:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes bounceIcon {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-15px); }
+    60% { transform: translateY(-7px); }
+}
+
+
+.hero-text {
+    font-size: 1.5em;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.cta-section {
+    background-color: transparent; /* Geen aparte achtergrond meer, focus op de knop */
+    padding: 20px 0; /* Minder padding */
+    margin-bottom: 30px;
+}
+
+.cta-section h2 {
+    font-size: 1.6em; /* Iets kleiner, directer */
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.cta-button i { /* Stijl voor icoontje in de knop */
+    margin-right: 10px;
+}
+
+.quick-info-pills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px; /* Ruimte tussen de pillen */
+    margin-bottom: 30px;
+}
+
+.quick-info-pills span {
+    background-color: #e9f5f9; /* Lichte achtergrond */
+    color: #2c7a7b; /* Tekstkleur die past bij thema */
+    padding: 8px 15px;
+    border-radius: 20px; /* Ronde pillen */
+    font-size: 0.95em;
+    font-weight: 500;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    display: inline-flex; /* Om icoon en tekst goed uit te lijnen */
+    align-items: center;
+}
+
+.quick-info-pills span i {
+    margin-right: 8px;
+    color: #2a9d8f; /* Icoonkleur */
+}
+
+.homepage-footer {
+    /* ... (bestaande footer stijlen) ... */
+    font-size: 0.9em;
+}

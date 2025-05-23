@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MicroBoost - Your Daily Mini-Challenge</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9271087055525719"
+     crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>MicroBoost</h1>
+            <p>Your daily dose of small, positive actions!</p>
+            <a href="index.html" class="home-link">Home</a> <!-- NIEUWE Home Link -->
+            <div class="stats-display">
+                <span id="streakDisplay">🔥 Streak: 0 Days</span>
+                <span id="totalBoostsDisplay">🚀 Total Boosts: 0</span>
+        </header>
+
+        <main>
+            <div class="filter-controls" id="filterButtons">
+                <button class="button filter-button" data-filter="all">All</button>
+                <button class="button filter-button" data-filter="short">Quick (1-2 min)</button>
+                <button class="button filter-button" data-filter="medium">Medium (5-10 min)</button>
+                <button class="button filter-button" data-filter="long">Extended (15+ min)</button>
+                <button id="showFavoritesButton" class="button filter-button favorite-toggle-button"><i class="fas fa-heart"></i> Favorites</button>
+            </div>
+
+            <div class="surprise-me-container">
+                <button id="surpriseMeButton" class="button button-special"><i class="fas fa-dice"></i> Surprise Me!</button>
+            </div>
+
+            <div class="challenge-card">
+                <p id="challengeText">Your first challenge is loading...</p>
+                <button id="favoriteButton" class="favorite-button"><i class="far fa-heart"></i></button>
+            </div>
+
+            <div class="actions">
+                <button id="doneButton" class="button">Done!</button>
+                <button id="nextOrNewButton" class="button button-secondary">New Challenge</button>
+            </div>
+
+            <div class="feedback-container">
+                <p id="feedbackText"></p>
+            </div>
+
+            <div class="quote-container">
+                <p id="motivationalQuote"></p>
+            </div>
+
+            <div id="favoritesPanel" class="favorites-panel hidden">
+                <h2>My Favorite Challenges</h2>
+                <ul id="favoritesList"></ul>
+                <button id="closeFavoritesButton" class="button button-secondary">Close</button>
+            </div>
+        </main>
+
+        <footer>
+            <p>© <span id="currentYear"></span> MicroBoost - Small steps, big impact.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

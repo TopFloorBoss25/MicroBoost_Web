@@ -3,71 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MicroBoost - Your Daily Mini-Challenge</title>
+    <title>MicroBoost - Your Instant Feel-Good Fix!</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+    <link rel="icon" href="favicon.png" type="image/png">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9271087055525719"
-     crossorigin="anonymous"></script>
+         crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <!-- Eventueel een lichte animatie library als je dat wilt, bijv. Animate.css (optioneel) -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/> -->
 </head>
 <body>
-    <div class="container">
-        <header>
+    <div class="container homepage-container">
+        <header class="homepage-header">
+            <img src="apple-touch-icon.png" alt="MicroBoost Logo" class="logo animate__animated animate__pulse animate__infinite animate__slower"> <!-- Logo met animatie -->
             <h1>MicroBoost</h1>
-            <p>Your daily dose of small, positive actions!</p>
-            <div class="stats-display">
-                <span id="streakDisplay">🔥 Streak: 0 Days</span>
-                <span id="totalBoostsDisplay">🚀 Total Boosts: 0</span>
-            </div>
+            <p class="tagline">Ready for an instant mood lift? ✨</p>
         </header>
 
-        <main>
-            <div class="filter-controls" id="filterButtons">
-                <button class="button filter-button" data-filter="all">All</button>
-                <button class="button filter-button" data-filter="short">Quick (1-2 min)</button>
-                <button class="button filter-button" data-filter="medium">Medium (5-10 min)</button>
-                <button class="button filter-button" data-filter="long">Extended (15+ min)</button>
-                <button id="showFavoritesButton" class="button filter-button favorite-toggle-button"><i class="fas fa-heart"></i> Favorites</button>
-            </div>
+        <main class="homepage-main">
+            <section class="hero-section">
+                <!-- Visueel element hier: misschien een korte GIF/video loop van confetti, lachende mensen,
+                     of het "Gedaan!" scherm van de app. Of een carrousel met 3 mini-uitdaging voorbeelden. -->
+                <div class="visual-placeholder">
+                    <i class="fas fa-check-circle hero-icon"></i>
+                    <i class="fas fa-bolt hero-icon"></i>
+                    <i class="fas fa-smile-beam hero-icon"></i>
+                </div>
+                <p class="hero-text">Small tasks. Big smiles. Instant wins!</p>
+            </section>
 
-            <div class="surprise-me-container">
-                <button id="surpriseMeButton" class="button button-special"><i class="fas fa-dice"></i> Surprise Me!</button>
-            </div>
+            <section class="cta-section">
+                <h2>Tap for your first boost!</h2>
+                <a href="boost.html" class="button button-primary cta-button animate__animated animate__tada animate__delay-1s">
+                    <i class="fas fa-rocket"></i> Get Your Boost!
+                </a>
+            </section>
 
-            <div class="challenge-card">
-                <p id="challengeText">Your first challenge is loading...</p>
-                <button id="favoriteButton" class="favorite-button"><i class="far fa-heart"></i></button>
-            </div>
-
-            <div class="actions">
-                <button id="doneButton" class="button">Done!</button>
-                <button id="nextOrNewButton" class="button button-secondary">New Challenge</button>
-            </div>
-
-            <div class="feedback-container">
-                <p id="feedbackText"></p>
-            </div>
-
-            <div class="quote-container">
-                <p id="motivationalQuote"></p>
-            </div>
-
-            <div id="favoritesPanel" class="favorites-panel hidden">
-                <h2>My Favorite Challenges</h2>
-                <ul id="favoritesList"></ul>
-                <button id="closeFavoritesButton" class="button button-secondary">Close</button>
-            </div>
+            <section class="quick-info-pills">
+                <span><i class="fas fa-bolt"></i> Quick & Easy</span>
+                <span><i class="fas fa-brain"></i> Mood Lifting</span>
+                <span><i class="fas fa-redo"></i> Daily Streaks</span>
+                <span><i class="fas fa-heart"></i> Favorite Challenges</span>
+            </section>
         </main>
 
-        <footer>
-            <p>© <span id="currentYear"></span> MicroBoost - Small steps, big impact.</p>
+        <footer class="homepage-footer">
+            <p>© <span id="currentYear"></span> MicroBoost - Get your daily spark.</p>
         </footer>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        const currentYearElement = document.getElementById('currentYear');
+        if (currentYearElement) {
+            currentYearElement.textContent = new Date().getFullYear();
+        }
+    </script>
 </body>
 </html>
