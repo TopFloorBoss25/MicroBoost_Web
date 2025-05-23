@@ -679,3 +679,46 @@ header .stats-display span {
     /* ... (bestaande footer stijlen) ... */
     font-size: 0.9em;
 }
+
+/* ... (Al je bestaande CSS) ... */
+
+/* Stijlen voor de Zen Zone CTA op de Homepage */
+.zen-zone-cta-section {
+    background-color: #e0eaff; /* Een ander zacht, kalmerend kleurtje */
+    border-radius: 10px;
+    margin-top: 30px; /* Ruimte boven deze sectie */
+    margin-bottom: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.zen-zone-cta-section h2 {
+    font-size: 1.6em;
+    color: #333; /* Behoud leesbaarheid */
+    margin-bottom: 10px;
+}
+
+.zen-zone-description {
+    font-size: 1.05em;
+    color: #555;
+    max-width: 500px;
+    margin: 0 auto 20px auto; /* Centreer en geef ruimte */
+}
+
+.cta-button-zen { /* Specifieke stijl voor deze knop */
+    background-color: #6287b7 !important; /* Kleur die past bij de sleep.html thema */
+    color: white !important;
+    font-size: 1.2em !important;
+    padding: 12px 30px !important;
+    box-shadow: 0 4px 12px rgba(98, 135, 183, 0.4) !important;
+    text-decoration: none;
+}
+
+.cta-button-zen:hover {
+    background-color: #53749b !important; /* Iets donkerder bij hover */
+}
+
+.cta-button-zen i {
+    margin-right: 10px;
+}
+
+/* ... (Rest van je CSS) ... */

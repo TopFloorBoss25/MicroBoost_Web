@@ -1,0 +1,198 @@
+/* sleep_style.css */
+
+.sleep-page-body {
+    background-color: #1c2541; /* Donkerblauw, nachtelijke sfeer */
+    color: #f0f8ff; /* Lichte tekstkleur (AliceBlue) */
+    transition: background-color 0.5s ease;
+}
+
+.sleep-container {
+    background-color: rgba(42, 55, 100, 0.7); /* Semi-transparant donkerblauw */
+    padding: 20px 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    max-width: 550px;
+    width: 90%;
+    border: 1px solid rgba(128, 128, 255, 0.2); /* Subtiele lichte rand */
+}
+
+.sleep-header {
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative; /* Voor de home link positionering */
+}
+
+.home-link-sleep {
+    position: absolute;
+    top: -10px;
+    left: -15px;
+    font-size: 0.9em;
+    color: #a0d2eb;
+    text-decoration: none;
+    padding: 8px 12px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    transition: background-color 0.3s, color 0.3s;
+}
+.home-link-sleep:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #f0f8ff;
+}
+.home-link-sleep i {
+    margin-right: 5px;
+}
+
+
+.sleep-header h1 {
+    color: #a0d2eb; /* Lichtblauw */
+    font-size: 2.2em;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.sleep-header p {
+    color: #c0d6e4; /* Nog lichter blauw/grijs */
+    font-size: 1.05em;
+}
+
+.breathing-guide-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+    min-height: 250px; /* Ruimte voor cirkel en tekst */
+}
+
+.breathing-circle {
+    width: 100px; /* Startgrootte */
+    height: 100px;
+    background-color: #6287b7; /* Zacht, dromerig blauw */
+    border-radius: 50%;
+    margin-bottom: 20px;
+    transition: transform 3.8s cubic-bezier(0.45, 0.05, 0.55, 0.95), background-color 3.8s ease; /* Langzame, vloeiende transitie */
+    box-shadow: 0 0 20px rgba(98, 135, 183, 0.5), 0 0 30px rgba(98, 135, 183, 0.3) inset;
+}
+
+.breathing-circle.inhale {
+    transform: scale(1.8);
+    background-color: #8bb5e8; /* Lichter bij inademen */
+}
+
+.breathing-circle.exhale {
+    transform: scale(1);
+    background-color: #6287b7; /* Terug naar basiskleur */
+}
+
+.breathing-instruction {
+    font-size: 1.2em;
+    color: #e0e0ff;
+    min-height: 1.5em; /* Voorkom springen van layout */
+    font-weight: 300;
+}
+
+.sleep-main .controls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+/* Overwrite algemene knopstijlen voor deze pagina indien nodig */
+.button-sleep-cta {
+    background-color: #7aa0c9; /* Passend bij thema */
+    color: #1c2541; /* Donkere tekst voor contrast */
+    box-shadow: 0 4px 10px rgba(122, 160, 201, 0.3);
+    padding: 12px 20px;
+}
+.button-sleep-cta:hover {
+    background-color: #8bb5e8;
+}
+.button-sleep-cta i {
+    margin-right: 8px;
+}
+
+
+.button-sleep-secondary {
+    background-color: rgba(255,255,255,0.15);
+    color: #e0e0ff;
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 10px 15px;
+}
+.button-sleep-secondary:hover {
+    background-color: rgba(255,255,255,0.25);
+}
+.button-sleep-secondary.sound-on i {
+    color: #a0d2eb; /* Lichter blauw als geluid aan is */
+}
+
+
+.sleep-tips-container {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.sleep-tips-container h2 {
+    font-size: 1.3em;
+    color: #a0d2eb;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-weight: 400;
+}
+.sleep-tips-container h2 i {
+    margin-right: 8px;
+}
+
+#sleepTipText {
+    font-size: 1em;
+    color: #d0e0f0;
+    min-height: 3em; /* Ruimte voor 2 regels tekst */
+    margin-bottom: 15px;
+    font-weight: 300;
+    line-height: 1.5;
+}
+
+.button-sleep-small {
+    background-color: transparent;
+    color: #a0d2eb;
+    border: 1px solid #a0d2eb;
+    padding: 6px 12px;
+    font-size: 0.9em;
+}
+.button-sleep-small:hover {
+    background-color: #a0d2eb;
+    color: #1c2541;
+}
+
+.sleep-footer {
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 0.9em;
+    color: #a0d2eb;
+    font-weight: 300;
+}
+
+.breathing-circle {
+    width: 100px; /* Startgrootte */
+    height: 100px;
+    background-color: #6287b7;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    /* Belangrijk: transitie voor transform (schaal) en achtergrondkleur */
+    transition: transform 3.8s cubic-bezier(0.45, 0.05, 0.55, 0.95), background-color 3.8s ease;
+    box-shadow: 0 0 20px rgba(98, 135, 183, 0.5), 0 0 30px rgba(98, 135, 183, 0.3) inset;
+    transform: scale(1); /* Expliciete startwaarde voor schaal */
+}
+
+.breathing-circle.inhale { /* Wordt gebruikt voor inademen en vasthouden (vol) */
+    transform: scale(1.8); /* Groter worden */
+    background-color: #8bb5e8; /* Lichter bij inademen */
+}
+
+.breathing-circle.exhale { /* Wordt gebruikt voor uitademen en vasthouden (leeg) */
+    transform: scale(1); /* Terug naar originele grootte */
+    background-color: #6287b7; /* Terug naar basiskleur */
+}
