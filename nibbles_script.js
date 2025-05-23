@@ -27,12 +27,11 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: "n8", text: "Cleopatra lived closer in time to the invention of the iPhone than to the construction of the Great Pyramid of Giza.", category: "history" },
         { id: "n9", text: "Bananas are berries, but strawberries aren't.", category: "science", source: "Botanical classification" },
         { id: "n10", text: "'Ephemeral' (adjective): lasting for a very short time.", category: "word" },
-        // Voeg hier nog VEEL meer nibbles toe!
         { id: "n11", text: "A group of flamingos is called a 'flamboyance'.", category: "funfact" },
         { id: "n12", text: "The first computer programmer was Ada Lovelace, an English mathematician, in the mid-1800s.", category: "history", source: "Computer History Museum" },
         { id: "n13", text: "It's impossible to hum while holding your nose closed.", category: "funfact" },
         { id: "n14", text: "The human brain is more active during sleep than during the day.", category: "science", source: "Sleep Foundation" },
-        { id: "n15", text: "'Ubiquitous' (adjective): present, appearing, or found everywhere.", category: "word" }
+        { id: "n15", text: "'Ubiquitous' (adjective): present, appearing, or found everywhere.", category: "word" },
         { id: "n16", text: "A 'quixotic' person is exceedingly idealistic, unrealistic, and impractical.", category: "word", source: "Literary (Don Quixote)" },
         { id: "n17", text: "Slugs have four noses.", category: "science", source: "Zoological Fact" },
         { id: "n18", text: "The Eiffel Tower can be 15 cm taller during the summer due to thermal expansion of the iron.", category: "science", source: "Engineering Fact" },
