@@ -722,3 +722,48 @@ header .stats-display span {
 }
 
 /* ... (Rest van je CSS) ... */
+
+/* In style.css - voor de Nibbles CTA op de homepage */
+
+.nibbles-cta-section {
+    background-color: #fff3cd; /* Lichte, warme geel tint */
+    padding: 30px 20px;
+    border-radius: 10px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    
+}
+
+.nibbles-cta-section h2 {
+    font-size: 1.6em;
+    color: #856404; /* Donkergeel/bruin voor contrast */
+    margin-bottom: 10px;
+    text-decoration: none;
+}
+.nibbles-cta-section h2 i { margin-right: 8px; text-decoration: none;}
+
+
+.nibbles-description {
+    font-size: 1.05em;
+    color: #555;
+    max-width: 500px;
+    margin: 0 auto 20px auto;
+}
+
+.cta-button-nibbles { /* Specifieke stijl voor deze knop */
+    background-color: #f7b733 !important; /* Goud/geel */
+    color: #333 !important; /* Donkere tekst voor contrast */
+    font-size: 1.2em !important;
+    padding: 12px 30px !important;
+    box-shadow: 0 4px 12px rgba(247, 183, 51, 0.4) !important;
+    text-decoration: none;
+}
+
+.cta-button-nibbles:hover {
+    background-color: #f4a100 !important;
+}
+
+.cta-button-nibbles i {
+    margin-right: 10px;
+}

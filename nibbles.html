@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MicroBoost - Knowledge Nibbles!</title>
+    <link rel="stylesheet" href="style.css"> <!-- Basis CSS -->
+    <link rel="stylesheet" href="nibbles_style.css"> <!-- Specifieke CSS -->
+    <link rel="icon" href="favicon.png" type="image/png">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9271087055525719"
+         crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Eventueel Animate.css voor extra animaties -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+</head>
+<body class="nibbles-page-body">
+
+    <div class="nibbles-container">
+        <header class="nibbles-header">
+            <a href="index.html" class="home-link-nibbles"><i class="fas fa-home"></i> Home</a>
+            <h1>Knowledge Nibbles</h1>
+            <p>Unlock a new surprising fact or insight!</p>
+        </header>
+
+        <main class="nibbles-main">
+            <div class="nibble-dispenser-area">
+                <div id="nibbleCard" class="nibble-card">
+                    <div class="nibble-category" id="nibbleCategory">Category</div>
+                    <div class="nibble-text" id="nibbleText">Ready for a knowledge snack?</div>
+                    <div class="nibble-source" id="nibbleSource">(Source: If available)</div>
+                </div>
+                <button id="getNibbleButton" class="button button-nibble-cta animate__animated animate__pulse animate__infinite animate__slower">
+                    <i class="fas fa-lightbulb"></i> Get New Nibble!
+                </button>
+            </div>
+
+            <div class="nibble-progress-container">
+                <h3>Your Discoveries Today: <span id="discoveredCount">0</span> / <span id="totalDailyNibbles">5</span></h3>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="discoveryProgressBar"></div>
+                </div>
+                <p id="dailyRewardMessage" class="daily-reward-message"></p>
+            </div>
+
+            <div class="filter-nibbles-container">
+                <h4>Filter by Category:</h4>
+                <button class="button filter-nibble-button active" data-category="all">All</button>
+                <button class="button filter-nibble-button" data-category="science">Science</button>
+                <button class="button filter-nibble-button" data-category="history">History</button>
+                <button class="button filter-nibble-button" data-category="funfact">Fun Facts</button>
+                <button class="button filter-nibble-button" data-category="word">Word of the Day</button>
+            </div>
+        </main>
+
+        <footer class="nibbles-footer">
+            <p>Feed your curiosity with MicroBoost!</p>
+        </footer>
+    </div>
+
+    <!-- Geluidseffect voor een nieuwe nibble -->
+    <audio id="nibbleSound">
+        <source src="HIER_EEN_LEUK_PLING_GELUID.mp3" type="audio/mpeg">
+    </audio>
+     <audio id="rewardSound">
+        <source src="HIER_EEN_BELONING_GELUID.mp3" type="audio/mpeg">
+    </audio>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script> <!-- Confetti voor beloningen -->
+    <script src="nibbles_script.js"></script>
+</body>
+</html>
