@@ -202,6 +202,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if(feedbackTextElement) feedbackTextElement.classList.add('show');
         if(doneButton) doneButton.disabled = true;
 
+        localStorage.setItem('microBoostLastDoneText', currentChallenge.text);
+        
         const today = new Date().toLocaleDateString();
         if (lastCompletedDate !== today) {
             const yesterday = new Date();

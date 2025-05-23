@@ -635,9 +635,13 @@ header .stats-display span {
 }
 
 .cta-section {
-    background-color: transparent; /* Geen aparte achtergrond meer, focus op de knop */
-    padding: 20px 0; /* Minder padding */
+    background-color: #4a4a4a;
+    padding: 30px 20px;
+    border-radius: 10px;
+    margin-top: 30px;
     margin-bottom: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    color: #f5f5f5;
 }
 
 .cta-section h2 {
@@ -684,11 +688,13 @@ header .stats-display span {
 
 /* Stijlen voor de Zen Zone CTA op de Homepage */
 .zen-zone-cta-section {
-    background-color: #e0eaff; /* Een ander zacht, kalmerend kleurtje */
+    background-color: #4a4a4a;
+    padding: 30px 20px;
     border-radius: 10px;
-    margin-top: 30px; /* Ruimte boven deze sectie */
+    margin-top: 30px;
     margin-bottom: 30px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    color: #f5f5f5;
 }
 
 .zen-zone-cta-section h2 {
@@ -726,12 +732,13 @@ header .stats-display span {
 /* In style.css - voor de Nibbles CTA op de homepage */
 
 .nibbles-cta-section {
-    background-color: #fff3cd; /* Lichte, warme geel tint */
+    background-color: #4a4a4a;
     padding: 30px 20px;
     border-radius: 10px;
     margin-top: 30px;
     margin-bottom: 30px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    color: #f5f5f5;
     
 }
 
@@ -765,5 +772,48 @@ header .stats-display span {
 }
 
 .cta-button-nibbles i {
+    margin-right: 10px;
+}
+
+/* In style.css - voor de Guilty Pleasure CTA op de homepage */
+
+.guilty-cta-section {
+    background-color: #4a4a4a; /* Donkere, ondeugende achtergrond */
+    padding: 30px 20px;
+    border-radius: 10px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    color: #f5f5f5;
+}
+
+.guilty-cta-section h2 {
+    font-size: 1.6em;
+    color: #ffcb77; /* Goud accent */
+    margin-bottom: 10px;
+}
+.guilty-cta-section h2 i { margin-right: 8px; }
+
+.guilty-description {
+    font-size: 1.05em;
+    color: #e0e0e0;
+    max-width: 500px;
+    margin: 0 auto 20px auto;
+}
+
+.cta-button-guilty { /* Specifieke stijl voor deze knop */
+    background-color: #ff7e5f !important; /* Warme oranje/rood */
+    color: white !important;
+    font-size: 1.2em !important;
+    padding: 12px 30px !important;
+    box-shadow: 0 4px 12px rgba(255, 126, 95, 0.4) !important;
+    text-decoration: none;
+}
+
+.cta-button-guilty:hover {
+    background-color: #e65c36 !important; /* Donkerder bij hover */
+}
+
+.cta-button-guilty i {
     margin-right: 10px;
 }

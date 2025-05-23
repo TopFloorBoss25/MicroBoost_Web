@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // DOM Elementen
     const nibbleCard = document.getElementById('nibbleCard');
     const nibbleCategoryElement = document.getElementById('nibbleCategory');
     const nibbleTextElement = document.getElementById('nibbleText');
@@ -15,8 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const nibbleSound = document.getElementById('nibbleSound');
     const rewardSound = document.getElementById('rewardSound');
 
-    // Constanten en Data
-    const MAX_DAILY_NIBBLES = 5;
+    const MAX_DAILY_NIBBLES = 5; // Limiet voor dagelijkse beloning
+
     const allNibbles = [
         { id: "n1", text: "Honey never spoils. Archaeologists have found pots of honey in ancient Egyptian tombs that are over 3,000 years old and still perfectly edible!", category: "funfact", source: "National Geographic" },
         { id: "n2", text: "A flock of crows is known as a 'murder'.", category: "funfact" },
@@ -105,93 +104,68 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: "n85", text: "The only letter not appearing on the periodic table is 'J'.", category: "funfact", source: "Chemistry" }
     ];
 
-    // State Variabelen
     let currentNibblesPool = [...allNibbles];
     let lastShownNibbleId = null;
-    let discoveredToday;
-    let lastDiscoveryDate;
-
-    // --- Functies ---
+    let discoveredToday = parseInt(localStorage.getItem('nibblesDiscoveredToday')) || 0;
+    let lastDiscoveryDate = localStorage.getItem('nibblesLastDiscoveryDate') || "";
 
     function updateButtonState(isLimitReached) {
-        if (!getNibbleButton) return;
-        getNibbleButton.disabled = isLimitReached;
-        if (isLimitReached) {
-            getNibbleButton.innerHTML = '<i class="fas fa-hourglass-half"></i> Come back tomorrow!';
-        } else {
-            getNibbleButton.innerHTML = '<i class="fas fa-lightbulb"></i> Get New Nibble!';
-        }
-    }
-
-    function updateProgressDisplay() {
-        if (discoveredCountElement) discoveredCountElement.textContent = discoveredToday;
-        if (totalDailyNibblesElement) totalDailyNibblesElement.textContent = MAX_DAILY_NIBBLES;
-        if (discoveryProgressBar) {
-            const percentage = (discoveredToday / MAX_DAILY_NIBBLES) * 100;
-            discoveryProgressBar.style.width = `${Math.min(percentage, 100)}%`;
+        if (getNibbleButton) {
+            getNibbleButton.disabled = isLimitReached;
+            if (isLimitReached) {
+                getNibbleButton.innerHTML = '<i class="fas fa-hourglass-half"></i> Come back tomorrow!';
+            } else {
+                getNibbleButton.innerHTML = '<i class="fas fa-lightbulb"></i> Get New Nibble!';
+            }
         }
     }
 
     function initializeDailyProgress() {
         const today = new Date().toLocaleDateString();
-        lastDiscoveryDate = localStorage.getItem('nibblesLastDiscoveryDate') || "";
-
         if (lastDiscoveryDate !== today) {
             discoveredToday = 0;
             localStorage.setItem('nibblesDiscoveredToday', '0');
             localStorage.setItem('nibblesLastDiscoveryDate', today);
             if (dailyRewardMessageElement) dailyRewardMessageElement.textContent = "";
-            updateButtonState(false);
+            updateButtonState(false); // Schakel knop in voor nieuwe dag
         } else {
-            discoveredToday = parseInt(localStorage.getItem('nibblesDiscoveredToday')) || 0;
-            const limitReached = discoveredToday >= MAX_DAILY_NIBBLES;
-            updateButtonState(limitReached);
-            if (limitReached && dailyRewardMessageElement) {
-                dailyRewardMessageElement.textContent = "You've discovered all your nibbles for today! Come back tomorrow for more!";
-            } else if (dailyRewardMessageElement) {
-                dailyRewardMessageElement.textContent = ""; // Reset als limiet niet bereikt is
+            // Het is nog steeds dezelfde dag, check of limiet al bereikt was
+            updateButtonState(discoveredToday >= MAX_DAILY_NIBBLES);
+            if (discoveredToday >= MAX_DAILY_NIBBLES && dailyRewardMessageElement) {
+                 dailyRewardMessageElement.textContent = "You've discovered all your nibbles for today! Come back tomorrow for more!";
             }
         }
         updateProgressDisplay();
     }
 
+    function updateProgressDisplay() {
+        if(discoveredCountElement) discoveredCountElement.textContent = discoveredToday;
+        if(totalDailyNibblesElement) totalDailyNibblesElement.textContent = MAX_DAILY_NIBBLES;
+        if(discoveryProgressBar) {
+            const percentage = (discoveredToday / MAX_DAILY_NIBBLES) * 100;
+            discoveryProgressBar.style.width = `${Math.min(percentage, 100)}%`;
+        }
+    }
+
     function triggerCardAnimation() {
         if (!nibbleCard) return;
-        nibbleCard.classList.remove('reveal', 'hide');
-        void nibbleCard.offsetWidth;
-        nibbleCard.classList.add('hide');
+        nibbleCard.classList.remove('reveal', 'hide'); // Zorg dat beide weg zijn
+        void nibbleCard.offsetWidth; // Forceer reflow
+        nibbleCard.classList.add('hide'); // Start met verbergen
         setTimeout(() => {
             nibbleCard.classList.remove('hide');
             nibbleCard.classList.add('reveal');
         }, 50);
     }
 
-    function displayNibble(nibble) {
-        lastShownNibbleId = nibble.id;
-        triggerCardAnimation();
-
-        if (nibbleTextElement) nibbleTextElement.textContent = nibble.text;
-        if (nibbleCategoryElement) nibbleCategoryElement.textContent = nibble.category.replace(/^\w/, c => c.toUpperCase());
-        if (nibbleSourceElement) nibbleSourceElement.textContent = nibble.source ? `(Source: ${nibble.source})` : "";
-
-        if (nibbleSound && nibbleSound.readyState >= 2) {
-            nibbleSound.currentTime = 0;
-            nibbleSound.play().catch(e => console.warn("Nibble sound play error:", e));
-        }
-    }
-    
-    function handleNewNibbleRequest() {
-        const today = new Date().toLocaleDateString();
-        if (lastDiscoveryDate !== today) { // Check of de dag is veranderd
-            initializeDailyProgress(); // Reset en update UI voor de nieuwe dag
-        }
-
-        if (discoveredToday >= MAX_DAILY_NIBBLES) {
-            if (nibbleTextElement) nibbleTextElement.textContent = "You've reached your daily nibble limit. More tomorrow!";
-            if (nibbleCategoryElement) nibbleCategoryElement.textContent = "See you soon!";
-            if (nibbleSourceElement) nibbleSourceElement.textContent = "";
-            updateButtonState(true); // Zorg dat knop disabled is
-            triggerCardAnimation();
+    function displayRandomNibble() {
+        if (discoveredToday >= MAX_DAILY_NIBBLES && getNibbleButton && getNibbleButton.disabled) {
+            // Als limiet bereikt is en knop al disabled, doe niets meer,
+            // of toon een herhaalde boodschap in de nibble card.
+            if(nibbleTextElement) nibbleTextElement.textContent = "You've reached your daily nibble limit. More tomorrow!";
+            if(nibbleCategoryElement) nibbleCategoryElement.textContent = "See you soon!";
+            if(nibbleSourceElement) nibbleSourceElement.textContent = "";
+            triggerCardAnimation(); // Misschien toch een animatie voor de kaart
             return;
         }
 
@@ -209,42 +183,60 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             do {
                 nibble = currentNibblesPool[Math.floor(Math.random() * currentNibblesPool.length)];
-            } while (nibble && nibble.id === lastShownNibbleId);
+            } while (nibble && nibble.id === lastShownNibbleId); // Check of nibble bestaat
         }
-
-        if (!nibble) {
+        
+        if (!nibble) { // Fallback als er iets misgaat met selectie
             if (nibbleTextElement) nibbleTextElement.textContent = "Something went wrong, please try again!";
             triggerCardAnimation();
             return;
         }
 
-        displayNibble(nibble);
+        lastShownNibbleId = nibble.id;
+        triggerCardAnimation();
 
-        // Increment and save progress
-        discoveredToday++;
-        localStorage.setItem('nibblesDiscoveredToday', discoveredToday.toString());
-        // lastDiscoveryDate wordt al gezet/gecontroleerd in initializeDailyProgress
-        
-        updateProgressDisplay();
+        if (nibbleTextElement) nibbleTextElement.textContent = nibble.text;
+        if (nibbleCategoryElement) nibbleCategoryElement.textContent = nibble.category.replace(/^\w/, c => c.toUpperCase());
+        if (nibbleSourceElement) nibbleSourceElement.textContent = nibble.source ? `(Source: ${nibble.source})` : "";
+
+        if (nibbleSound && nibbleSound.readyState >= 2) {
+             nibbleSound.currentTime = 0;
+             nibbleSound.play().catch(e => console.warn("Nibble sound play error:", e));
+        }
+
+        if (discoveredToday < MAX_DAILY_NIBBLES) {
+            const today = new Date().toLocaleDateString();
+            // Als het een nieuwe dag is, had initializeDailyProgress dit al moeten afhandelen.
+            // Deze check is meer voor het geval de pagina lang openstaat.
+            if (lastDiscoveryDate !== today) {
+                initializeDailyProgress(); // Her-initialiseer als de dag is veranderd sinds pageload
+            }
+
+            // Verhoog alleen als de limiet nog niet bereikt was VOORDAT deze nibble werd getoond.
+            // Dit voorkomt dat de teller onnodig oploopt als de limiet al bereikt was.
+             if (discoveredToday < MAX_DAILY_NIBBLES) { // Dubbele check voor de zekerheid
+                discoveredToday++;
+                localStorage.setItem('nibblesDiscoveredToday', discoveredToday.toString());
+             }
+        }
+        updateProgressDisplay(); // Update altijd de display
 
         if (discoveredToday >= MAX_DAILY_NIBBLES) {
-            if (dailyRewardMessageElement) dailyRewardMessageElement.textContent = "🎉 You've unlocked all daily nibbles! Amazing job!";
+            if(dailyRewardMessageElement) dailyRewardMessageElement.textContent = "🎉 You've unlocked all daily nibbles! Amazing job!";
             if (typeof confetti === 'function') {
                 confetti({ particleCount: 150, spread: 90, origin: { y: 0.5 } });
             }
-            if (rewardSound && rewardSound.readyState >= 2) {
+            if(rewardSound && rewardSound.readyState >=2) {
                 rewardSound.play().catch(e => console.warn("Reward sound play error:", e));
             }
             updateButtonState(true); // Schakel knop uit
-        } else if (dailyRewardMessageElement) {
-            dailyRewardMessageElement.textContent = ""; // Reset beloningsbericht
+        } else if (dailyRewardMessageElement){
+            dailyRewardMessageElement.textContent = "";
         }
     }
 
-
-    // Event Listeners
     if (getNibbleButton) {
-        getNibbleButton.addEventListener('click', handleNewNibbleRequest);
+        getNibbleButton.addEventListener('click', displayRandomNibble);
     }
 
     if (filterButtonsContainer) {
@@ -261,17 +253,32 @@ document.addEventListener('DOMContentLoaded', () => {
                     currentNibblesPool = allNibbles.filter(n => n.category === category);
                 }
                 lastShownNibbleId = null;
-                handleNewNibbleRequest(); // Roep de centrale functie aan
+                // Als de limiet al bereikt is, toon dan geen nieuwe nibble maar de limietboodschap
+                if (discoveredToday < MAX_DAILY_NIBBLES || !getNibbleButton.disabled) {
+                    displayRandomNibble();
+                } else {
+                     if(nibbleTextElement) nibbleTextElement.textContent = "You've reached your daily nibble limit. More tomorrow!";
+                     if(nibbleCategoryElement) nibbleCategoryElement.textContent = "See you soon!";
+                     if(nibbleSourceElement) nibbleSourceElement.textContent = "";
+                     triggerCardAnimation();
+                }
             }
         });
     }
 
-    // Initialisatie bij laden van de pagina
-    initializeDailyProgress(); // Cruciaal: stelt de staat correct in bij het laden
-
+    // Initialisatie
+    initializeDailyProgress(); // Dit stelt de knop correct in bij laden.
     const initialActiveFilter = filterButtonsContainer ? filterButtonsContainer.querySelector('.filter-nibble-button[data-category="all"]') : null;
-    if (initialActiveFilter) initialActiveFilter.classList.add('active');
+    if(initialActiveFilter) initialActiveFilter.classList.add('active');
     
-    // Toon een eerste nibble of de "limiet bereikt" boodschap, afhankelijk van de staat
-    handleNewNibbleRequest(); 
+    // Toon een eerste nibble alleen als de limiet nog niet is bereikt
+    if (discoveredToday < MAX_DAILY_NIBBLES) {
+        displayRandomNibble();
+    } else {
+        // Limiet is al bereikt bij het laden van de pagina
+        if(nibbleTextElement) nibbleTextElement.textContent = "You've discovered all your nibbles for today! Come back tomorrow for more!";
+        if(nibbleCategoryElement) nibbleCategoryElement.textContent = "Limit Reached!";
+        if(nibbleSourceElement) nibbleSourceElement.textContent = "";
+        triggerCardAnimation();
+    }
 });

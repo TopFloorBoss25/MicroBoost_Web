@@ -1,0 +1,194 @@
+/* guiltypleasure_style.css */
+
+.guilty-pleasure-body {
+    background: linear-gradient(140deg, #4a0e4e 0%, #ff7e5f 50%, #feb47b 100%); /* Dieper, magischer paars naar zonsondergang */
+    color: #fff; /* Witte tekst voor beter contrast op donkere achtergrond */
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    overflow-x: hidden;
+}
+
+.gp-container {
+    background-color: rgba(30, 10, 40, 0.85); /* Donkerpaars, semi-transparant */
+    padding: 30px 40px;
+    border-radius: 25px;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.5), 0 0 0 2px rgba(255,172,127,0.6); /* Gloedrand */
+    max-width: 480px; /* Iets smaller voor mobiel-achtige feel */
+    width: 90%;
+    text-align: center;
+    border: 1px solid rgba(255, 172, 127, 0.3); /* Subtiele perzik-kleurige rand */
+}
+
+.gp-header { margin-bottom: 35px; position: relative; }
+.home-link-gp {
+    position: absolute; top: -20px; left: -25px; font-size: 0.9em;
+    color: #ffac7f; text-decoration: none; padding: 8px 12px;
+    background-color: rgba(255,255,255,0.1); border-radius: 20px; transition: all 0.3s;
+    border: 1px solid rgba(255,172,127,0.3);
+}
+.home-link-gp:hover { background-color: rgba(255,172,127,0.3); color: #fff; }
+.home-link-gp i { margin-right: 5px; }
+
+.gp-header h1 {
+    color: #ffac7f; /* Perzik/goud accent */
+    font-size: 2.4em; margin-bottom: 8px; font-weight: 700;
+    text-shadow: 0 2px 5px rgba(255,126,95,0.5); /* Zachtere schaduw */
+}
+.gp-header p { color: #f0e6ff; font-size: 1.1em; opacity: 0.9; }
+
+/* Modal Stijlen (kleine aanpassingen voor contrast) */
+.modal-content {
+    background-color: #3a254a; /* Donkerpaarse modal */
+    color: #f0e6ff;
+    border: 1px solid #ffac7f;
+}
+.close-button { color: #ffac7f; }
+.close-button:hover, .close-button:focus { color: #ff7e5f; }
+.modal-content h2 { color: #ffac7f; }
+.modal-content p { color: #e0d8f0; }
+.button-gp-agree {
+    background-color: #2a9d8f !important; /* Behoud MicroBoost groen */
+    box-shadow: 0 3px 8px rgba(42,157,143,0.4);
+}
+.button-gp-decline { background-color: #6c5084 !important; } /* Iets lichter paars */
+
+
+/* De Schudkist - Aantrekkelijker! */
+.shaker-box-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 35px 0;
+    perspective: 800px; /* Voor 3D effecten */
+}
+
+.shaker-box {
+    width: 160px; /* Iets groter */
+    height: 120px; /* Lager voor een kist-vorm */
+    background: linear-gradient(135deg, #6a3f9a 0%, #4a256a 100%); /* Diep paars gradient */
+    border: 3px solid #b19cd9; /* Lichtpaarse, "magische" rand */
+    border-radius: 12px 12px 8px 8px; /* Afgerond deksel, rechtere basis */
+    margin-bottom: 25px;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3), inset 0 0 15px rgba(255,255,255,0.1);
+    transform-style: preserve-3d;
+    transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Bounce bij interactie */
+}
+.shaker-box:hover:not(.shaking):not(.open) {
+    transform: scale(1.05) rotateY(5deg);
+}
+
+.shaker-box .lid { /* Meer gedetailleerd deksel */
+    position: absolute;
+    width: 104%;
+    height: 50px;
+    background: linear-gradient(135deg, #7f5fad 0%, #5e3f8a 100%); /* Iets lichter paars deksel */
+    top: -25px; /* Deksel sluit beter aan */
+    left: -2%;
+    border-radius: 10px 10px 4px 4px;
+    border: 2px solid #c7b0e0;
+    box-shadow: 0 -4px 8px rgba(0,0,0,0.2), inset 0 3px 5px rgba(255,255,255,0.15);
+    transform: translateZ(10px) rotateX(5deg); /* Initiele lichte kanteling */
+    transform-origin: bottom center; /* Voor openklappen */
+    transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Soepel openklappen */
+}
+.shaker-box .box-body {
+    width: 100%; height: 100%; border-radius: 0 0 8px 8px; /* Voor als de basis een andere kleur zou hebben */
+    display: flex; justify-content: center; align-items: center; /* Voor eventuele textuur/details */
+}
+/* Slot (gouden detail) */
+.shaker-box::before {
+    content: '';
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%) translateZ(12px);
+    width: 20px;
+    height: 10px;
+    background-color: #ffd700; /* Goud */
+    border-radius: 3px;
+    border: 1px solid #b8860b; /* Donkergoud */
+    z-index: 2;
+}
+
+
+/* Animatie voor schudden - Meer "wiebelig" */
+@keyframes shakeAnimation {
+    0%, 100% { transform: translate(0, 0) rotate(0deg); }
+    10%, 90% { transform: translate(-2px, 1px) rotate(-1deg); }
+    20%, 80% { transform: translate(2px, -1px) rotate(1deg); }
+    30%, 70% { transform: translate(-3px, 2px) rotate(-2deg); }
+    40%, 60% { transform: translate(3px, -2px) rotate(2deg); }
+    50% { transform: translate(0px, 0px) rotate(0deg); }
+}
+.shaker-box.shaking {
+    animation: shakeAnimation 0.4s ease-in-out 2; /* Speel 2x af voor meer schud-effect */
+}
+
+/* Animatie voor openen (deksel klapt dramatisch omhoog en naar achter) */
+.shaker-box.open .lid {
+    transform: translateZ(5px) rotateX(-120deg) translateY(-40px) ;
+}
+/* Optioneel: doos kantelt iets naar voren bij openen */
+.shaker-box.open {
+    transform: rotateX(10deg);
+}
+
+
+.button-gp-shake {
+    background: linear-gradient(135deg, #ff7e5f, #e65c36) !important;
+    color: white !important;
+    font-size: 1.25em !important;
+    padding: 14px 28px !important;
+    border-radius: 30px !important;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    box-shadow: 0 5px 15px rgba(230, 92, 54, 0.5), 0 0 0 3px rgba(255,255,255,0.3) inset;
+    transition: all 0.2s ease-out; /* Voeg transition toe voor alle eigenschappen */
+}
+.button-gp-shake:hover:not(:disabled) {
+    background: linear-gradient(135deg, #e65c36, #ff7e5f) !important;
+    transform: translateY(-4px) scale(1.08) !important; /* Meer pop */
+    box-shadow: 0 8px 20px rgba(230, 92, 54, 0.6), 0 0 0 3px rgba(255,255,255,0.4) inset;
+}
+.button-gp-shake:active:not(:disabled) {
+    transform: translateY(-1px) scale(1.02) !important;
+    box-shadow: 0 3px 10px rgba(230, 92, 54, 0.5), 0 0 0 3px rgba(255,255,255,0.2) inset;
+}
+.button-gp-shake i { margin-right: 10px; }
+
+
+.result-display {
+    background-color: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,172,127,0.3);
+    padding: 25px; /* Meer padding */
+    border-radius: 15px;
+    min-height: 100px;
+    margin-top: 30px;
+    transition: opacity 0.6s ease-in-out, transform 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55); /* Pop-up effect */
+    opacity: 0;
+    transform: scale(0.8) translateY(30px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.result-display.show {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+}
+.result-display h2 { color: #ffac7f; font-size: 1.4em; margin-top: 0; margin-bottom: 12px; }
+#resultText { font-size: 1.25em; color: #f0e6ff; font-weight: 600; margin-bottom: 15px; line-height: 1.5;}
+/* GIF styling (als je die nog gebruikt) */
+#resultGif { display: none; max-width: 180px; margin-top: 10px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);}
+
+.gp-footer {
+    margin-top: 35px; padding-top: 20px;
+    border-top: 1px solid rgba(255, 172, 127, 0.2);
+    font-size: 0.9em; color: #e0d8f0; font-weight: 300;
+}
